@@ -1,4 +1,4 @@
 # Project-1
 
 
-![Wireframe](https://wireframe.cc/zBu66q)
+[Wireframe](https://wireframe.cc/zBu66q)
