@@ -1,7 +1,8 @@
 # Project-1
-
+LOTERIA!!
 
 [Wireframe](https://wireframe.cc/zBu66q)
+
 
 
 As a user, I should be able to start a LOTERIA game
