@@ -1,0 +1,31 @@
+body {
+  background-image: url(../Assets/larosa.jpg);
+  border: 2px solid blue;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+}
+
+#images {
+  background-color: black;
+  flex-direction: column-reverse;
+}
+
+#buttons {
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+#playLoteria {
+  border: 2px solid green;
+  height: 150px;
+  width: 250px;
+}
+
+html {
+  height: 100%;
+}
