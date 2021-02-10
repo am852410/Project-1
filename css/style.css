@@ -1,18 +1,35 @@
 body {
   background-image: url(../Assets/larosa.jpg);
-  border: 2px solid blue;
   height: 100%;
   width: 100%;
   min-height: 100%;
 }
 
 #images {
-  background-color: black;
-  flex-direction: column-reverse;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+#images-two {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+#images-three {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 
 #buttons {
-  border: 2px solid red;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,6 +43,24 @@ body {
   width: 250px;
 }
 
+#spacing {
+  background-image: url(../Assets/woodbackground.jpg);
+  padding-top: 550px;
+  padding-right: 530px;
+  padding-bottom: 550px;
+  padding-left: 580px;
+  border: 5px solid orange;
+}
+
+#playingCards {
+  border: 5px solid green;
+}
+#container {
+  background-image: url(../Assets/woodbackground.jpg);
+  display: flex;
+  justify-content: flex-start;
+  border: 5px solid blue;
+}
 html {
   height: 100%;
 }

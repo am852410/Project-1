@@ -37,17 +37,70 @@ const loteriaFullDeckOfCards = [
 ];
 
 const playerOneCardArray = [];
-function getGameCard() {
+const fullDeckOfCardsCopy = loteriaFullDeckOfCards.map(cardName => cardName);
+function getGameCardRowOne() {
   console.log("1: getGameCard");
 
-  const fullDeckOfCardsCopy = loteriaFullDeckOfCards.map(cardName => cardName);
-  for (let i = 0; i < 9; i++) {
+  for (let i = 0; i < 3; i++) {
     const randomIndex = Math.floor(Math.random() * fullDeckOfCardsCopy.length);
     const randomElement = fullDeckOfCardsCopy[randomIndex];
     playerOneCardArray.push(randomElement);
     fullDeckOfCardsCopy.splice(randomIndex, 1);
     console.log("array copy length", fullDeckOfCardsCopy.length);
     console.log("player one card", playerOneCardArray);
+  }
+}
+const playerOneCardArrayTwo = [];
+function getGameCardRowTwo() {
+  console.log("1: getGameCard");
+
+  for (let i = 0; i < 3; i++) {
+    const randomIndex = Math.floor(Math.random() * fullDeckOfCardsCopy.length);
+    const randomElement = fullDeckOfCardsCopy[randomIndex];
+    playerOneCardArrayTwo.push(randomElement);
+    fullDeckOfCardsCopy.splice(randomIndex, 1);
+    console.log("array copy length", fullDeckOfCardsCopy.length);
+    console.log("player one card", playerOneCardArrayTwo);
+  }
+}
+const playerOneCardArrayThree = [];
+function getGameCardRowThree() {
+  console.log("1: getGameCard");
+
+  for (let i = 0; i < 3; i++) {
+    const randomIndex = Math.floor(Math.random() * fullDeckOfCardsCopy.length);
+    const randomElement = fullDeckOfCardsCopy[randomIndex];
+    playerOneCardArrayThree.push(randomElement);
+    fullDeckOfCardsCopy.splice(randomIndex, 1);
+    console.log("array copy length", fullDeckOfCardsCopy.length);
+    console.log("player one card", playerOneCardArrayThree);
+  }
+}
+const randomDrawnCards = [];
+let interval = undefined;
+let index = 0;
+function drawingLoteriaCards() {
+  console.log("2: getRandomLoteriaCards");
+  const randomIndex = Math.floor(Math.random() * loteriaFullDeckOfCards.length);
+  const randomElement = loteriaFullDeckOfCards[randomIndex];
+  randomDrawnCards.push(randomElement);
+  loteriaFullDeckOfCards.splice(randomIndex, 1);
+  console.log(randomDrawnCards);
+  const img = document.createElement("img");
+  img.id = randomElement;
+  img.src = imageSources[randomElement];
+  console.log(img);
+  const divImages = document.getElementById("playing-cards");
+  divImages.innerHTML = "";
+  divImages.append(img);
+  console.log("div images", divImages);
+
+  if (index < 33) {
+    index++;
+    console.log("index", index);
+  } else {
+    clearInterval(interval);
+    console.log("interval", interval);
   }
 }
 
@@ -89,10 +142,68 @@ function createCardHtml() {
   // Step 3: Create html images
   // Step 4: Append to images div tag
 }
-document.getElementById("playLoteria").addEventListener("click", getGameCard);
+
+function createCardHtmlTwo() {
+  // Step 1: Loop through the playerOneCardArray array
+  for (let i = 0; i < playerOneCardArrayTwo.length; i++) {
+    const elementPlayerOne = playerOneCardArrayTwo[i];
+    console.log(elementPlayerOne);
+    console.log(imageSources[elementPlayerOne]);
+    const img = document.createElement("img");
+    img.id = elementPlayerOne;
+    img.src = imageSources[elementPlayerOne];
+    console.log(img);
+    const divImages = document.getElementById("images-two");
+    divImages.append(img);
+  }
+}
+
+function createCardHtmlThree() {
+  for (let i = 0; i < playerOneCardArrayThree.length; i++) {
+    const elementPlayerOne = playerOneCardArrayThree[i];
+    console.log(elementPlayerOne);
+    console.log(imageSources[elementPlayerOne]);
+    const img = document.createElement("img");
+    img.id = elementPlayerOne;
+    img.src = imageSources[elementPlayerOne];
+    console.log(img);
+    const divImages = document.getElementById("images-three");
+    divImages.append(img);
+  }
+  interval = setInterval(drawingLoteriaCards, 5000);
+  console.log("setting interval");
+}
+
+function pageScroll() {
+  window.scrollBy(0, 50); // horizontal and vertical scroll increments
+  scrolldelay = setTimeout(pageScroll, 100); // scrolls every 100 milliseconds
+  setTimeout(function() {
+    clearTimeout(scrolldelay);
+  }, 3000);
+}
+
+document
+  .getElementById("playLoteria")
+  .addEventListener("click", getGameCardRowOne);
+document
+  .getElementById("playLoteria")
+  .addEventListener("click", getGameCardRowTwo);
+document
+  .getElementById("playLoteria")
+  .addEventListener("click", getGameCardRowThree);
 document
   .getElementById("playLoteria")
   .addEventListener("click", generateImageSourceObject);
 document
   .getElementById("playLoteria")
   .addEventListener("click", createCardHtml);
+document
+  .getElementById("playLoteria")
+  .addEventListener("click", createCardHtmlTwo);
+document
+  .getElementById("playLoteria")
+  .addEventListener("click", createCardHtmlThree);
+document.getElementById("playLoteria").addEventListener("click", pageScroll);
+document
+  .getElementById("playLoteria")
+  .addEventListener("click", drawingLoteriaCards);
