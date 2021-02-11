@@ -173,6 +173,15 @@ function createCardHtmlThree() {
   interval = setInterval(drawingLoteriaCards, 5000);
   console.log("setting interval");
 }
+const coinsDiv = document.getElementById("coins");
+function playerOneCoins() {
+  for (let i = 0; i < 9; i++) {
+    const coins = document.createElement("img");
+    coins.src = "Assets/sierramadrechip.png";
+    coins.height = 100;
+    coinsDiv.appendChild(coins);
+  }
+}
 
 function pageScroll() {
   window.scrollBy(0, 50); // horizontal and vertical scroll increments
@@ -207,3 +216,6 @@ document.getElementById("playLoteria").addEventListener("click", pageScroll);
 document
   .getElementById("playLoteria")
   .addEventListener("click", drawingLoteriaCards);
+document
+  .getElementById("playLoteria")
+  .addEventListener("click", playerOneCoins);

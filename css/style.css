@@ -29,6 +29,11 @@ body {
   justify-content: center;
 }
 
+#coins {
+  width: 10px;
+  height: 10px;
+}
+
 #buttons {
   display: flex;
   justify-content: center;
@@ -44,22 +49,23 @@ body {
 }
 
 #spacing {
-  background-image: url(../Assets/woodbackground.jpg);
-  padding-top: 550px;
-  padding-right: 530px;
-  padding-bottom: 550px;
-  padding-left: 580px;
-  border: 5px solid orange;
+  /* border: 5px solid orange; */
+  padding: 0 100px;
 }
 
-#playingCards {
-  border: 5px solid green;
+#playing-cards {
+  /* border: 5px solid green; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
 }
 #container {
   background-image: url(../Assets/woodbackground.jpg);
   display: flex;
-  justify-content: flex-start;
-  border: 5px solid blue;
+  justify-content: center;
+  /* border: 5px solid blue; */
+  padding: 350px 0px;
 }
 html {
   height: 100%;
