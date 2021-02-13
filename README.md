@@ -23,4 +23,4 @@ As a user, I should win the game once the entire game card is filled with the co
 As a user, I should be shown a message when I win the game. 
 
 
-As a user, I should be able to play the game again by clicking a button 
+
