@@ -5,6 +5,11 @@ body {
   min-height: 100%;
 }
 
+.coin-match {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
 #images {
   display: flex;
   flex-direction: row;
@@ -30,8 +35,8 @@ body {
 }
 
 #coins {
-  width: 10px;
-  height: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 #buttons {
@@ -50,7 +55,8 @@ body {
 
 #spacing {
   /* border: 5px solid orange; */
-  padding: 0 100px;
+  padding: 10px;
+  background-color: white;
 }
 
 #playing-cards {

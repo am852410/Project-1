@@ -95,15 +95,47 @@ function drawingLoteriaCards() {
   divImages.append(img);
   console.log("div images", divImages);
 
-  if (index < 33) {
+  if (index < 32) {
     index++;
     console.log("index", index);
   } else {
     clearInterval(interval);
     console.log("interval", interval);
   }
+  if (playerOneCardArray.find(card => card === randomElement)) {
+    const coin = document.getElementById("coins").firstChild;
+    console.log("coin", coin);
+    coin.className = "coin-match";
+    const imageMatch = document.getElementById(randomElement);
+    imageMatch.append(coin);
+    determineTheWinner();
+  }
+  if (playerOneCardArrayTwo.find(card => card === randomElement)) {
+    const coin = document.getElementById("coins").firstChild;
+    coin.className = "coin-match";
+    const imageMatch = document.getElementById(randomElement);
+    imageMatch.append(coin);
+    determineTheWinner();
+  }
+  if (playerOneCardArrayThree.find(card => card === randomElement)) {
+    const coin = document.getElementById("coins").firstChild;
+    coin.className = "coin-match";
+    const imageMatch = document.getElementById(randomElement);
+    imageMatch.append(coin);
+    determineTheWinner();
+  }
 }
 
+function determineTheWinner() {
+  const coinsArray = document.getElementsByClassName("coin-match");
+  console.log("COINS ARRAY", coinsArray);
+  if (coinsArray.length === 9) {
+    setTimeout(function() {
+      alert("LOTERIA!!! PLAYER 1 WINS!!");
+    }, 1000);
+    clearInterval(interval);
+  }
+}
 const imageSources = {};
 function generateImageSourceObject() {
   // Step 1: Loop through the full card array
@@ -132,11 +164,19 @@ function createCardHtml() {
     console.log(elementPlayerOne);
     console.log(imageSources[elementPlayerOne]);
     const img = document.createElement("img");
-    img.id = elementPlayerOne;
+    const imageWrapper = document.createElement("div");
+    imageWrapper.id = elementPlayerOne;
     img.src = imageSources[elementPlayerOne];
+    img.style.position = "relative";
+    img.style.top = 0;
+    img.style.left = 0;
+    imageWrapper.append(img);
+    imageWrapper.style.position = "relative";
+    imageWrapper.style.top = 0;
+    imageWrapper.style.left = 0;
     console.log(img);
     const divImages = document.getElementById("images");
-    divImages.append(img);
+    divImages.append(imageWrapper);
   }
   // Step 2: Use the elements to get the image sources
   // Step 3: Create html images
@@ -150,11 +190,19 @@ function createCardHtmlTwo() {
     console.log(elementPlayerOne);
     console.log(imageSources[elementPlayerOne]);
     const img = document.createElement("img");
-    img.id = elementPlayerOne;
+    const imageWrapper = document.createElement("div");
+    imageWrapper.id = elementPlayerOne;
     img.src = imageSources[elementPlayerOne];
+    img.style.position = "relative";
+    img.style.top = 0;
+    img.style.left = 0;
+    imageWrapper.append(img);
+    imageWrapper.style.position = "relative";
+    imageWrapper.style.top = 0;
+    imageWrapper.style.left = 0;
     console.log(img);
     const divImages = document.getElementById("images-two");
-    divImages.append(img);
+    divImages.append(imageWrapper);
   }
 }
 
@@ -164,58 +212,53 @@ function createCardHtmlThree() {
     console.log(elementPlayerOne);
     console.log(imageSources[elementPlayerOne]);
     const img = document.createElement("img");
-    img.id = elementPlayerOne;
+    const imageWrapper = document.createElement("div");
+    imageWrapper.id = elementPlayerOne;
     img.src = imageSources[elementPlayerOne];
+    img.style.position = "relative";
+    img.style.top = 0;
+    img.style.left = 0;
+    imageWrapper.append(img);
+    imageWrapper.style.position = "relative";
+    imageWrapper.style.top = 0;
+    imageWrapper.style.left = 0;
     console.log(img);
     const divImages = document.getElementById("images-three");
-    divImages.append(img);
+    divImages.append(imageWrapper);
   }
-  interval = setInterval(drawingLoteriaCards, 5000);
+  interval = setInterval(drawingLoteriaCards, 1000);
   console.log("setting interval");
 }
+
 const coinsDiv = document.getElementById("coins");
-function playerOneCoins() {
+function makeCoinBank() {
   for (let i = 0; i < 9; i++) {
-    const coins = document.createElement("img");
-    coins.src = "Assets/sierramadrechip.png";
-    coins.height = 100;
-    coinsDiv.appendChild(coins);
+    const coin = document.createElement("img");
+    coin.src = "Assets/sierramadrechip.png";
+    coin.height = 100;
+    coinsDiv.append(coin);
   }
 }
 
 function pageScroll() {
-  window.scrollBy(0, 50); // horizontal and vertical scroll increments
+  window.scrollBy(0, 100); // horizontal and vertical scroll increments
   scrolldelay = setTimeout(pageScroll, 100); // scrolls every 100 milliseconds
   setTimeout(function() {
     clearTimeout(scrolldelay);
   }, 3000);
 }
 
-document
-  .getElementById("playLoteria")
-  .addEventListener("click", getGameCardRowOne);
-document
-  .getElementById("playLoteria")
-  .addEventListener("click", getGameCardRowTwo);
-document
-  .getElementById("playLoteria")
-  .addEventListener("click", getGameCardRowThree);
-document
-  .getElementById("playLoteria")
-  .addEventListener("click", generateImageSourceObject);
-document
-  .getElementById("playLoteria")
-  .addEventListener("click", createCardHtml);
-document
-  .getElementById("playLoteria")
-  .addEventListener("click", createCardHtmlTwo);
-document
-  .getElementById("playLoteria")
-  .addEventListener("click", createCardHtmlThree);
-document.getElementById("playLoteria").addEventListener("click", pageScroll);
-document
-  .getElementById("playLoteria")
-  .addEventListener("click", drawingLoteriaCards);
-document
-  .getElementById("playLoteria")
-  .addEventListener("click", playerOneCoins);
+function onClick() {
+  generateImageSourceObject();
+  makeCoinBank();
+  getGameCardRowOne();
+  getGameCardRowTwo();
+  getGameCardRowThree();
+  createCardHtml();
+  createCardHtmlTwo();
+  createCardHtmlThree();
+  pageScroll();
+  drawingLoteriaCards();
+}
+
+document.getElementById("playLoteria").addEventListener("click", onClick);
