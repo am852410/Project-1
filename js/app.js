@@ -226,7 +226,7 @@ function createCardHtmlThree() {
     const divImages = document.getElementById("images-three");
     divImages.append(imageWrapper);
   }
-  interval = setInterval(drawingLoteriaCards, 1000);
+  interval = setInterval(drawingLoteriaCards, 4000);
   console.log("setting interval");
 }
 
