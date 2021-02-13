@@ -77,7 +77,7 @@ function getGameCardRowThree() {
   }
 }
 const randomDrawnCards = [];
-let interval = undefined;
+let interval;
 let index = 0;
 function drawingLoteriaCards() {
   console.log("2: getRandomLoteriaCards");
@@ -131,7 +131,7 @@ function determineTheWinner() {
   console.log("COINS ARRAY", coinsArray);
   if (coinsArray.length === 9) {
     setTimeout(function() {
-      alert("LOTERIA!!! PLAYER 1 WINS!!");
+      alert("LOTERIA!!!");
     }, 1000);
     clearInterval(interval);
   }
@@ -184,7 +184,6 @@ function createCardHtml() {
 }
 
 function createCardHtmlTwo() {
-  // Step 1: Loop through the playerOneCardArray array
   for (let i = 0; i < playerOneCardArrayTwo.length; i++) {
     const elementPlayerOne = playerOneCardArrayTwo[i];
     console.log(elementPlayerOne);
@@ -226,8 +225,6 @@ function createCardHtmlThree() {
     const divImages = document.getElementById("images-three");
     divImages.append(imageWrapper);
   }
-  interval = setInterval(drawingLoteriaCards, 4000);
-  console.log("setting interval");
 }
 
 const coinsDiv = document.getElementById("coins");
@@ -258,7 +255,9 @@ function onClick() {
   createCardHtmlTwo();
   createCardHtmlThree();
   pageScroll();
-  drawingLoteriaCards();
+  interval = setInterval(drawingLoteriaCards, 4000);
+  console.log("setting interval");
+  // drawingLoteriaCards();
 }
 
 document.getElementById("playLoteria").addEventListener("click", onClick);
